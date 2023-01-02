@@ -1,0 +1,36 @@
+package common.enums;
+
+import java.util.Objects;
+
+public enum Command {
+    BROADCAST_MESSAGE("/broadcast"),
+    LIST_USERS("/list"),
+    PRIVATE_MESSAGE("/private"),
+    AUTH_MESSAGE("/auth"),
+    AUTH_OK("/auth-ok"),
+    CHANGE_NICK("/change-nick"),
+    CHANGE_NICK_OK("/change-nick-ok"),
+    ERROR_MESSAGE("/error"),
+    CHANGE_PASSWORD("/change-pass"),
+    CHANGE_PASSWORD_OK("/change-pass-ok");
+
+    private String command;
+
+    Command(String command) {
+        this.command = command;
+    }
+
+    public String getCommand() {
+        return command;
+    }
+
+    public static Command getByCommand(String command) {
+        for (Command value : values()) {
+            if (Objects.equals(value.command, command)) {
+                return value;
+            }
+        }
+        System.out.println("Ошибка");
+        throw new IllegalArgumentException();
+    }
+}
